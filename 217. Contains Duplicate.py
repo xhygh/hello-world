@@ -5,7 +5,9 @@ and it should return false if every element is distinct
 
 '''
 
-
+'''
+set保证元素唯一，如果没有重复的元素则set之后长度不变，否则不同，len(set(nums))<=len(nums)
+'''
 class Solution(object):
     def containsDuplicate(self, nums):
         """
@@ -13,7 +15,7 @@ class Solution(object):
         :rtype: bool
         """
         nums=sorted(nums)
-        set_nums=list(set(nums))
+        set_nums=sorted(list(set(nums)))
         if nums==set_nums:
             return False
         return True
