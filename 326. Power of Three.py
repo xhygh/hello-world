@@ -4,6 +4,18 @@ Given an integer, write a function to determine if it is a power of three.
 Follow up:
 Could you do it without using any loop / recursion?
 """
+
+'''
+>>> import math
+>>> n=243
+>>> tmp = math.log(n, 3)
+>>> tmp
+4.999999999999999
+>>> math.log10(n) / math.log10(3)
+5.0
+
+'''
+
 class Solution(object):
     def isPowerOfThree(self, n):
         """
