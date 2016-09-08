@@ -28,3 +28,24 @@ since a node can be a descendant of itself according to the LCA definition.
 原文链接：http://www.jianshu.com/p/3b6e9bf1f2f7
 著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
 '''
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        if root == None: return root
+        elif root.val==p.val or root.val==q.val: return root
+        elif min(p.val,q.val) > root.val: return self.lowestCommonAncestor(root.right,p,q)
+        elif max(p.val,q.val) < root.val: return self.lowestCommonAncestor(root.left,p,q)
+        elif min(p.val,q.val) <root.val and max(p.val,q.val) > root.val:return root
+            
