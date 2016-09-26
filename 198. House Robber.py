@@ -8,7 +8,7 @@ contact the police if two adjacent houses were broken into on the same night.
 Given a list of non-negative integers representing the amount of money of each house, 
 determine the maximum amount of money you can rob tonight without alerting the police.
 """
-
+# solution: 
 class Solution(object):
     def rob(self, nums):
         """
