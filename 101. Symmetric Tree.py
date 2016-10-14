@@ -44,7 +44,7 @@ class Solution(object):
         return self.isMirror(root,root)
     '''
     
-    # (Iterative)
+    # (Iterative + Queue)
     def isSymmetric(self, root):
         """
         :type root: TreeNode
@@ -65,4 +65,27 @@ class Solution(object):
             q.put(t2.right)
             q.put(t1.right)
             q.put(t2.left)
+        return True
+
+    
+    # (Iterative + list)
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if root is None: return True
+        q = []
+        q.append(root.left)
+        q.append(root.right)
+        while q:
+            t1 = q.pop(0)
+            t2 = q.pop(0)
+            if t1 is None and t2 is None: continue
+            if t1 is None or t2 is None: return False
+            if t1.val != t2.val: return False
+            q.append(t1.left)
+            q.append(t2.right)
+            q.append(t1.right)
+            q.append(t2.left)
         return True
