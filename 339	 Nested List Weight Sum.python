@@ -1,0 +1,64 @@
+# """
+# This is the interface that allows for creating nested lists.
+# You should not implement it, or speculate about its implementation
+# """
+# class NestedInteger(object):
+#    def isInteger(self):
+#        """
+#        @return True if this NestedInteger holds a single integer, rather than a nested list.
+#        :rtype bool
+#        """
+#
+#    def getInteger(self):
+#        """
+#        @return the single integer that this NestedInteger holds, if it holds a single integer
+#        Return None if this NestedInteger holds a nested list
+#        :rtype int
+#        """
+#
+#    def getList(self):
+#        """
+#        @return the nested list that this NestedInteger holds, if it holds a nested list
+#        Return None if this NestedInteger holds a single integer
+#        :rtype List[NestedInteger]
+#        """
+
+'''
+1.isinstance(a,int)和type(a) is int 区别:
+class A:
+    pass
+
+class B(A):
+    pass
+
+isinstance(A(), A)  # returns True
+type(A()) == A      # returns True
+isinstance(B(), A)    # returns True
+type(B()) == A        # returns False
+
+'''
+
+class Solution(object):
+    def depthSum( nestedList ):
+    """
+    :type nestedList: List[NestedInteger]
+    :rtype: int
+    """
+    if not nestedList:
+        return 0
+    stack = []
+    sum = 0
+    for eachelem in nestedList:
+        stack.append((eachelem,1)) # w=1
+    while stack:
+        tmp, depth = stack.pop(0)
+        if tmp.isInteger():
+            sum += tmp*depth
+        else:
+            for each in tmp.getList():
+                stack.append((each,depth+1))
+    return sum   
+        
+        
+        
+        
