@@ -16,6 +16,11 @@ But the following [1,2,2,null,3,null,3] is not:
    3    3
 Note:
 Bonus points if you could solve it both recursively and iteratively.
+
+Tags:Tree,Depth-first Search, Breadth-first Search
+https://leetcode.com/tag/tree/
+https://leetcode.com/tag/depth-first-search/
+https://leetcode.com/tag/breadth-first-search/
 """
 
 # Definition for a binary tree node.
