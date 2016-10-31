@@ -2,7 +2,12 @@
 Given two binary trees, write a function to check if they are equal or not.
 
 Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
+
+Tags:Tree,Depth-first Search
+https://leetcode.com/tag/tree/
+https://leetcode.com/tag/depth-first-search/
 '''
+# ===========================================================
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
