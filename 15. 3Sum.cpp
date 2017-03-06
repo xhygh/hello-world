@@ -18,7 +18,6 @@ similar:1. Two Sum[e],16. 3Sum Closest[m],18. 4Sum[m],
 
 */
 
-
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -39,7 +38,7 @@ public:
                 }
                 else if (*i + *j + *k > targ){
                     k--;
-                    while(j<k && *k==*(k+1)) ++k;  //吧中间相同的数据都跳过
+                    while(j<k && *k==*(k+1)) --k;  //吧中间相同的数据都跳过
                 }else{
                     result.push_back({*i,*j,*k});
                     ++j;
@@ -47,6 +46,7 @@ public:
                     while(j<k && *k==*(k+1) && *j==*(j-1)) j++;
                 }
             }
+            
         }
         return result;
     }
