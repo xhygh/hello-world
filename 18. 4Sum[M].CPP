@@ -63,3 +63,7 @@ public:
 		return result;
 	}
 };
+/*方法2：Mapping
+使用一个hashmap缓存2个数之和。
+时间复杂度O(n^2),最差情况O(n^4),空间复杂度O(n^2)因为保存的2个数是2个for循环
+*/
