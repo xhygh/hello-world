@@ -66,4 +66,47 @@ public:
 /*方法2：Mapping
 使用一个hashmap缓存2个数之和。
 时间复杂度O(n^2),最差情况O(n^4),空间复杂度O(n^2)因为保存的2个数是2个for循环
+282 / 282 test cases passed.
+Status: Accepted
+Runtime: 102 ms
 */
+
+
+
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> res;
+        if(nums.size()<4) return res;
+        sort(nums.begin(),nums.end());
+        
+        //建立hashmap，把所有可能的有序2数字对的index存入hashmap
+        unordered_map<int,vector<vector<int>>> hashmap;
+        for(int a=0;a<nums.size()-1;++a){
+            for(int b=a+1;b<nums.size();++b){
+                vector<int> v = {a,b};
+                hashmap[nums[a]+nums[b]].push_back(v);
+            }
+        }
+        
+        //开始2数字对凑成4数字对，注意是先后有序的a<b<c<d 且都是index
+        for(int c = 0;c<nums.size()-1;++c){
+            for(int d = c+1;d<nums.size();++d){
+                const int key = target - nums[c]-nums[d];
+                //如果key不存在则继续循环下一个
+                if(hashmap.find(key)==hashmap.end()) continue;
+                //如果存在，顺序满足则存入res
+                const auto& tmpv = hashmap[key];
+                for(int k=0;k<tmpv.size();++k){
+                    if(c<=tmpv[k][1]) continue;
+                    res.push_back({nums[tmpv[k][0]],nums[tmpv[k][1]],nums[c],nums[d]});
+                }
+            }
+        }
+        sort(res.begin(),res.end());
+        res.erase(unique(res.begin(),res.end()),res.end());
+        return res;
+        
+        
+    }
+};
