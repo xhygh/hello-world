@@ -37,6 +37,7 @@ class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         if(n==0) return;
+        //nums1.insert(nums1.end(),n,0);  //如果nums1.size()==m,即没有多余的位置可以下标操作
         int rear = m+n-1;
         int i = m-1;
         int j = n-1;
