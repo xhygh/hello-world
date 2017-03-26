@@ -28,6 +28,12 @@ tags:tree,depth-first search,breadth-first search;
 利用之前的sameTree方法即可.
 
 [注意]几种情况：空树，单节点树，左右孩子皆存在树，单孩子树。
+
+193 / 193 test cases passed.
+Status: Accepted
+Runtime: 3 ms
+36.07%
+时间复杂度O(n)，空间复杂度O(1)
 ***********************/
 
 /**
