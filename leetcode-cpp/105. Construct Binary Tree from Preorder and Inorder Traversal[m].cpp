@@ -47,3 +47,47 @@ public:
         
     }
 };
+
+
+/**********************************
+解题思路：
+用长度控制递归基，更容易理解。
+
+202 / 202 test cases passed.
+Status: Accepted
+Runtime: 19 ms
+44.73%
+时间复杂度(n),空间复杂度O(n)
+*********************************/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        if(preorder.empty()) return NULL;
+        return recBuildTree(preorder, inorder,0,0,preorder.size());
+    }
+    
+    TreeNode* recBuildTree(vector<int>& preorder, vector<int>& inorder,int pre_st, int in_st,int len_tree){
+        int i = in_st; 
+        while(inorder[i] != preorder[pre_st]) ++i; //找到中序中root的位置
+        
+        TreeNode* root = new TreeNode(preorder[pre_st]);//先序的第一个node为根节点
+        
+        if(i-in_st>0)//如果左边还有node，
+            root->left = recBuildTree(preorder, inorder, pre_st+1,in_st,i-in_st);
+            
+        if(len_tree-(i-in_st + 1)>0)//如果右边还有node
+            root->right = recBuildTree(preorder, inorder, pre_st+i-in_st+1,i+1,len_tree-(i-in_st+1));
+        return root;//如果本届点是node上边俩if都没有，直接这个
+        
+    }
+};
