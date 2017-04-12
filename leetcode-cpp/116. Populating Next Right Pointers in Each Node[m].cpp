@@ -32,7 +32,7 @@ After calling your function, the tree should look like:
     
 tags:tree,depth-first search;117m,119m
 */
-
+ 
 /***************
 solution:
 给出一颗二叉树，有left，right，next3个指针。令next指向next right node，初始时，所有next=NULL;
