@@ -38,6 +38,7 @@ public:
         int maxopt = opt; //记录n个元素中的最大连续子序列之和
         for(int i=1;i<n;++i){
             opt = opt>0?opt+nums[i]:0+nums[i];//记录当前长度的最大连续子序列和，供给下一次使用
+            //opt = max(opt+nums[i],0+nums[i]);  计算数值上等价于上一句，因为opt>0是=时……
             maxopt = max(maxopt,opt);//记录最大连续子序列
         }
         return maxopt;
