@@ -32,17 +32,13 @@ public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         if (n<=0) return head;
         ListNode *faster=head,*smaller=head;
-        for(int i=0;i<n;i++){
-            if (faster!=nullptr)
-                faster = faster->next;
-            else
-                return head;
-        }
-        while(faster){
+        while(n-->0) faster=faster->next;
+        if(faster==nullptr) return head->next;//只有一个元素，且要删除它
+        while(faster->next!=nullptr){//开始找要删除当元素的位置，smaller的在目标元素之前一个
             smaller=smaller->next;
             faster=faster->next;
-        }
-        smaller->next = n==1?nullptr:smaller->next->next;
+        }//faster到达最后一个元素
+        smaller->next = smaller->next->next;//删除目标元素
         return head;
         
     }
