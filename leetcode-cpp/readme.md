@@ -67,3 +67,9 @@ value_comp()--返回一个用于比较元素间的值的函数
 
 二叉查找树的特点，lc < father,rc > father，中序遍历可以领节点从小到大排列。
 
+# 删除remove和erase
+
+  C++中的remove并不是真的删除，而是把目标元素转移到vector的末尾，如果要真正的删除需要配合erase
+  原1,2,3,4,5
+  remove(vec.begin(),vec.end(),3): 1,2,4,5,3
+  erase(remove(vec.begin(),vec.end(),3),vec.end())
